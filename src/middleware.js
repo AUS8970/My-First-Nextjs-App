@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
  
 export function middleware(request) {
   const dummyUserData = {
-    role: "user",
+    role: "admin",
     email: "test@gmail.com"
   }
 

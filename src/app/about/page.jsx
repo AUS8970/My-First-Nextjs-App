@@ -8,9 +8,9 @@ export default function AboutPage() {
 
   const handleNavigation = () => {
     if(isLoggedIn){
-      router.push("/about/address")
+      router.push("/about/address");
     } else {
-      router.push("/")
+      router.push("/");
     }
   }
   return (

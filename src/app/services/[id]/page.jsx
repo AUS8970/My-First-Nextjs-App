@@ -1,7 +1,8 @@
+import NotFoundPage from '@/app/not-found';
 import React from 'react'
 
 export default function ServiceDetailPage({ params }) {
-  const id = params.id;
+  const id = params?.id;
 
   const data = [
     {
@@ -36,12 +37,16 @@ export default function ServiceDetailPage({ params }) {
     },
   ]
 
-  const singleData = data.find(d => d._id == id)
+  const singleData = data.find(d => d._id == id);
 
-  return (
-    <div className='flex flex-col items-center'>
-      <p className="text-center text-4xl font-semibold"> {singleData.service_name} </p>
-      <p className="text-center py-4 w-1/2"> {singleData.service_description} </p>
-    </div>
-  )
+  if(singleData){
+    return (
+      <div className='flex flex-col items-center'>
+        <p className="text-center text-4xl font-semibold"> {singleData.service_name} </p>
+        <p className="text-center py-4 w-1/2"> {singleData.service_description} </p>
+      </div>
+    )
+  } else {
+    return <NotFoundPage />
+  }
 }

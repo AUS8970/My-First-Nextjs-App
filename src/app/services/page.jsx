@@ -1,6 +1,11 @@
 import Link from 'next/link'
 import React from 'react'
 
+export const metadata = {
+  title: "Services",
+  description: "Our pupoler services",
+};
+
 export default function ServicesPage() {
   const data = [
     {

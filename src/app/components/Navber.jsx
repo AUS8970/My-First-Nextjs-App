@@ -12,6 +12,7 @@ export default function Navber() {
         <nav className='flex justify-center py-5'>
           <ul className="flex gap-4">
             <Link href={"/"}> <li className=""> Home </li> </Link>
+            <Link href={"/products"}> <li className=""> Products </li> </Link>
             <Link href={"/posts"}> <li className=""> Posts </li> </Link>
             <Link href={"/meals"}> <li className=""> Meals </li> </Link>
             <Link href={"/services"}> <li className=""> Services </li> </Link>

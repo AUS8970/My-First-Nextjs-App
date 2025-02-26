@@ -1,23 +1,19 @@
 "use client";
+import { postProduct } from "@/app/actions/products/postProduct";
+import { useRouter } from "next/navigation";
 
 export default function ProductAddForm() {
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
     const productName = form.productName.value;
-    const payload ={productName}
-    const res = await fetch("http://localhost:3000/api/items", {
-      method: "POST",
-      body: JSON.stringify(payload),
-      headers: {
-        "Content-Type" : "application/json"
-      }
-    });
-    const result = await res.json();
+    const payload ={productName};
+    const result = await postProduct(payload);
     console.log(result);
     form.reset();
-    alert("product added");
+    router.push('/products')
   }
 
   return (

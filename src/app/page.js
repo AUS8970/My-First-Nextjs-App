@@ -1,7 +1,14 @@
-export default function Home() {
+import { getServerSession } from "next-auth";
+import UserInfo from "./components/UserInfo";
+import { authOptions } from "./api/auth/[...nextauth]/route";
+
+export default async function Home() {
+  const session = await getServerSession(authOptions);
+
   return (
     <div className="">
-      <h1> Hello! </h1>
+      <UserInfo />
+      {JSON.stringify(session)}
     </div>
   );
 };

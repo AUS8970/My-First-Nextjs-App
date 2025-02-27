@@ -2,11 +2,14 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React from 'react'
+import LoginButton from './LoginButton';
 
 export default function Navber() {
   const pathName = usePathname();
   console.log(pathName, pathName.includes("dashboard"))
-  if(pathName.includes("dashboard")){ return <></>; } else {
+  if(pathName.includes("dashboard")){ 
+    return <></>
+  } else {
     return (
       <div>
         <nav className='flex justify-center py-5'>
@@ -17,9 +20,12 @@ export default function Navber() {
             <Link href={"/meals"}> <li className=""> Meals </li> </Link>
             <Link href={"/services"}> <li className=""> Services </li> </Link>
             <Link href={"/about"}> <li className=""> About </li> </Link>
+            <Link href={"/register"}> <li className=""> Register </li> </Link>
+            <LoginButton />
+            {/* <Register /> */}
           </ul>
         </nav>
       </div>
     )
   }
-}
+};

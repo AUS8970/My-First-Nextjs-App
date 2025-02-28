@@ -12,8 +12,8 @@ export default function Navber() {
   } else {
     return (
       <div>
-        <nav className='flex justify-center py-5'>
-          <ul className="flex gap-4">
+        <nav className='flex flex-col justify-center items-center py-5'>
+          <ul className="flex items-center justify-center py-1 gap-4 bg-purple-950 w-full">
             <Link href={"/"}> <li className=""> Home </li> </Link>
             <Link href={"/products"}> <li className=""> Products </li> </Link>
             <Link href={"/posts"}> <li className=""> Posts </li> </Link>
@@ -23,6 +23,10 @@ export default function Navber() {
             <Link href={"/register"}> <li className=""> Register </li> </Link>
             <LoginButton />
             {/* <Register /> */}
+          </ul>
+          <ul className="flex items-center justify-center py-1 gap-4 bg-purple-600 w-full">
+            <Link href={"/"}> <li className=""> Home </li> </Link>
+            <Link href={"/rogiLipi"}> <li className=""> Rogi Lipi </li> </Link>
           </ul>
         </nav>
       </div>

@@ -1,16 +1,16 @@
+import { getToken } from 'next-auth/jwt';
 import { NextResponse } from 'next/server'
- 
-export function middleware(request) {
-  const dummyUserData = {
-    role: "admin",
-    email: "test@gmail.com"
+
+export const middleware = async (req) => {
+  const token = await getToken({ req })
+  const isTokenOk = Boolean(token)
+  const isAdminUser = token?.role == 'admin'
+  const isAdminSpecificRoute = req.nextUrl.pathname.startsWith("/products")
+
+  if(isAdminSpecificRoute && !isAdminUser) {
+    const callbackUrl = encodeURIComponent(req.nextUrl.pathname)
+    return NextResponse.redirect(new URL(`/api/auth/signin?callbackUrl=${callbackUrl}`, req.url))
   }
-
-  let isServicesPage = request.nextUrl.pathname.startsWith("/services");
-  let isAdmin = dummyUserData.role == "admin";
-
-  if(isServicesPage && !isAdmin) 
-    return NextResponse.redirect(new URL('/login', request.url));
 
   return NextResponse.next();
 }

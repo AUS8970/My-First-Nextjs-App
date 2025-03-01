@@ -2,6 +2,8 @@ import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import Navber from "./components/Navber";
 import NextAuthSessionProvider from "@/providers/NextAuthSessionProvider";
+import { getServerSession } from "next-auth";
+import { authOptions } from "./lib/authOptions";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,12 +29,13 @@ export const metadata = {
   description: "Trying to learn NextJS as best as we can",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const session = await getServerSession(authOptions);
   return (
     <html lang="en">
       <body className={`${poppins.className} antialiased`}>
         <NextAuthSessionProvider>
-          <Navber />
+          <Navber session={session} />
           <main className="h-screen"> {children} </main>
         </NextAuthSessionProvider>
       </body>

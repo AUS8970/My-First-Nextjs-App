@@ -3,8 +3,12 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React from 'react'
 import LoginButton from './LoginButton';
+import LogoutButton from './LogoutButton';
+// import { getServerSession } from 'next-auth';
+// import { authOptions } from '../lib/authOptions';
 
 export default function Navber() {
+  // const session = getServerSession(authOptions)
   const pathName = usePathname();
   console.log(pathName, pathName.includes("dashboard"))
   if(pathName.includes("dashboard")){ 
@@ -21,6 +25,7 @@ export default function Navber() {
             <Link href={"/services"}> <li className=""> Services </li> </Link>
             <Link href={"/about"}> <li className=""> About </li> </Link>
             <Link href={"/register"}> <li className=""> Register </li> </Link>
+            <LogoutButton />
             <LoginButton />
             {/* <Register /> */}
           </ul>
